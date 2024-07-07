@@ -1,0 +1,198 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(120deg, rgba(5, 20, 85, 0.8), rgba(71, 182, 117, 0.8)), url(../../../../public/img/fondoregistro.jpg);
+    font-family: Arial, sans-serif;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    gap: 0; /* Añade un espacio entre la imagen y el contenedor de inicio de sesión */
+}
+
+.image-form img {
+    width: auto;
+    height: auto;
+    max-width: 95%;
+    border-radius: 8px;
+    display: block;
+}
+
+.login-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    flex-shrink: 0;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.key-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.key {
+    padding: 15px 20px;
+    margin: 3px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+}
+
+.key:hover {
+    background-color: #ccc;
+}
+
+.recordar {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.recordar a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.recordar a:hover {
+    text-decoration: underline;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .login {
+        flex-direction: column;
+    }
+
+    .image-form {
+        display: none;
+    }
+
+    .login-container {
+        width: 90%;
+    }
+
+    .key {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    button[type="submit"] {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    input {
+        padding: 8px;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+    }
+}

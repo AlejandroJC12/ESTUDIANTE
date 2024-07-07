@@ -1,0 +1,123 @@
+<div class="container-body">
+    <div class="header">
+      <div>
+        <a href="#" [routerLink]="['/estudiante/home.estudiante']" target="_blank" class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/6819/6819195.png" alt="logo">
+            <h2 class="nombre-empresa">TechConnect</h2>
+        </a>
+
+    </div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Buscar por..." [(ngModel)]="searchTerm"
+            (input)="onSearchChange()">
+        </div>
+        <a href="#" class="filter" [routerLink]="['/estudiante/mis-postulaciones', estudiante.id]"><h6>Mis Postulaciones</h6></a>
+
+        <div class="filter" id="filter">
+          <h6>Filtrar por Habilidades</h6>
+          <!-- Lista de habilidades en checkboxes -->
+          <form>
+              <div class="form-check" *ngFor="let skill of skills">
+                  <input class="form-check-input" type="checkbox" id="habilidad{{skill.id}}" [checked]="habilidadesSeleccionadas.includes(skill.id)" (change)="onSkillChange(skill.id)">
+                  <label class="form-check-label" for="habilidad{{skill.id}}">
+                      {{ skill.nombreHabilidad }}
+                  </label>
+                </div>
+          </form>
+      </div>
+
+       <!-- Botón Buscar
+       <button type="submit" class="btn btn-primary mt-2" (click)="buscarOfertasPorHabilidades()">Buscar</button> -->
+      
+        <div class="user-input-container">
+            <i class="fas fa-user"></i>
+            <input type="text" name="user" id="user" placeholder="Usuario" list="user-options">
+            <div class="dropdown">
+                <a [routerLink]="['/estudiante/profile', estudiante.id]">Ver perfil</a>
+                <a href="#" (click)="onLogout($event)">Cerrar Sesion</a> 
+            </div>
+        </div>
+    </div>
+    <div class="b-section-regular">            
+            <div class="container">
+                <!-- Mostrar error si existe -->
+                <div *ngIf="errorMessage" class="alert alert-danger">
+                  {{ errorMessage }}
+                  <button class="btn btn-primary" (click)="resendVerificationEmail()" >Verificar Correo</button>
+                </div>
+                <div *ngIf="successMessage" class="alert alert-success">    
+                    {{ successMessage }}
+                </div>
+                <div *ngIf="errorMessage1" class="alert alert-danger">
+                  {{ errorMessage1 }}
+                </div>
+                <div *ngIf="errorMessage2" class="alert alert-danger">
+                  {{ errorMessage2 }}
+                </div>
+
+                <div *ngIf="loading" class="spinner">Cargando...</div>
+              
+                <div *ngIf="!loading">  
+                    <div class="row">
+                        <!-- Iterar sobre la lista de ofertas y mostrar cada una en una tarjeta -->
+                        <div *ngFor="let oferta of filteredOfertas" class="col-md-4 mb-4">
+                          <div class="b-integration-card">
+                            <div class="margin-bottom-08">
+                              <div class="paragraph-large b-text-weight-semibold">
+                                {{ oferta.titulo }} <!-- Asegúrate de que la clave coincide con tu estructura de datos -->
+                              </div>
+                            </div>
+                            <div class="b-paragraph-small b-text-color-gray-700">
+                              <span class="b-span-primary">
+                                {{ oferta.nombreEmpresa }} <!-- Asegúrate de que la clave coincide con tu estructura de datos -->
+                              </span>
+                              <ul>
+                                <li>Ciudad: {{ oferta.ciudad }}</li>
+                                <li>Descripción: {{ oferta.descripcion }}</li>
+                                <li>Carrera: {{ oferta.carrera }}</li>
+                                <li>Sueldo: {{ oferta.sueldo }}</li>
+                                <li>Habilidades Requeridas:
+                                  <ul>
+                                    <li *ngFor="let habilidad of oferta.habilidades">{{ habilidad.nombreHabilidad }}</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="b-integration-button-wrapper">
+                              <ng-container *ngIf="!oferta.yaPostulado; else yaPostuladoTemplate">
+                                <a  (click)="postular(oferta.id)" class="b-button-default-icon w-inline-block">
+                                  <div>
+                                    Postular
+                                  </div>
+                                </a>
+                              </ng-container>
+                              <ng-template #yaPostuladoTemplate>
+                                <p>Ya te has postulado a esta oferta</p>
+                              </ng-template>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              
+                <!-- Paginación -->
+                <nav aria-label="Paginación">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                      <a class="page-link" (click)="cambiarPagina(currentPage - 1)" aria-label="Anterior">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li *ngFor="let page of [].constructor(totalPages); let i = index" class="page-item" [class.active]="currentPage === i + 1">
+                      <a class="page-link" (click)="cambiarPagina(i + 1)">{{ i + 1 }}</a>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                      <a class="page-link" (click)="cambiarPagina(currentPage + 1)" aria-label="Siguiente">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+        </div>
+    </div>

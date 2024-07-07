@@ -1,0 +1,92 @@
+<main>
+    <div class="formbold-main-wrapper">
+        <!-- Contenedor principal que envuelve todo el contenido del formulario -->
+        <div class="formbold-form-wrapper">
+            <!-- Contenedor para el formulario, aplicando una clase CSS personalizada -->
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNzY6d3aVTcGvOhnQdVXdpx7Tf9QVMOZupUA&s"
+                    class="img-fluid" alt="imagenfondo">
+            <!-- Imagen de fondo con clase de Bootstrap para hacerla fluida y un atributo alt para accesibilidad -->
+            <form  method="POST" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+                <section>
+                    <div class="formbold-mb-3">
+                        <label for="nombres" class="formbold-form-label"> Nombres </label>
+                        <input type="text" name="nombres" id="nombres" 
+                        [(ngModel)]="estudiante.nombres" placeholder="Nombres..."
+                            class="formbold-form-input" />
+                        <!-- Campo de entrada para los nombres, con un ID y una clase personalizada -->
+                    </div>
+                    <div class="formbold-mb-3">
+                        <label for="apellidos" class="formbold-form-label"> Apellidos </label>
+                        <input type="text" name="apellidos" id="apellidos" [(ngModel)]="estudiante.apellidos" placeholder="Apellidos..."
+                            class="formbold-form-input" />
+                        <!-- Campo de entrada para los apellidos, con un ID y una clase personalizada -->
+                    </div>
+
+                    <div class="formbold-mb-3">
+                        <label class="formbold-form-label" for="genero"> Genero </label>
+                        <select class="formbold-form-input" name="genero" id="genero" [(ngModel)]="estudiante.genero">
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                        </select>
+                        <!-- Selección de género con opciones para masculino, femenino y otros -->
+                    </div>
+
+                    <div class="formbold-mb-3">
+                        <label for="fecha_nacimiento" class="formbold-form-label"> Fecha de Nacimiento </label>
+                        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" [(ngModel)]="estudiante.fecha_nacimiento" class="formbold-form-input"/>
+                        <!-- Campo de entrada para la fecha de nacimiento, con un ID y una clase personalizada -->
+                    </div>
+                    <div class="formbold-mb-3">
+                        <label for="correo" class="formbold-form-label"> Correo Electronico </label>
+                        <input type="email" name="correo" id="correo" [(ngModel)]="estudiante.correo" placeholder="example@email.com"
+                            class="formbold-form-input" />
+                        <!-- Campo de entrada para el correo electrónico, con validación de tipo email -->
+                    </div>
+
+                    <div class="formbold-mb-3 formbold-input-wrapp">
+                        <label for="telefono" class="formbold-form-label"> Teléfono</label>
+                        <div>
+                            <input type="text" name="telefono" id="telefono" [(ngModel)]="estudiante.telefono" placeholder="Número Telefónico"
+                                class="formbold-form-input" />
+                            <!-- Campo de entrada para el teléfono, con un ID y una clase personalizada -->
+                        </div>
+                    </div>
+
+                    <div class="formbold-mb-3">
+                        <label for="carrera" class="formbold-form-label"> Carrera </label>
+                        <select class="formbold-form-input" name="carrera" id="carrera" [(ngModel)]="estudiante.carrera">
+                            <option>Ing. de Sistemas</option>
+                            <option>Ciberseguridad</option>
+                        </select>
+                        <!-- Campo de entrada para la ciudad, con un ID y una clase personalizada -->
+                    </div>
+
+                    <!-- Nuevo campo de área de texto para información sobre la carrera -->
+                    <div class="formbold-mb-3 formbold-input-wrapp">
+                        <label for="bio" class="formbold-form-label"> Información sobre ti</label>
+                        <textarea name="bio" id="bio" [(ngModel)]="estudiante.bio" rows="4" placeholder="Describa su trayectoria"
+                            class="formbold-form-input"></textarea>
+                    </div>
+
+                    <div class="formbold-mb-3 formbold-input-wrapp">
+                        <label for="photo" class="formbold-form-label"> Subir Foto de Perfil </label>
+                        <input type="file" name="photo" id="photo" (change)="onFileSelected($event)"
+                            class="formbold-form-input formbold-form-file" />
+                        <!-- Campo de entrada para subir un archivo, con un ID y una clase personalizada -->
+                    </div>
+                    <div class="container-sm" id="img">
+                        <img id="selectedImage" src="https://media.istockphoto.com/id/1223671392/es/vector/imagen-de-perfil-predeterminada-avatar-marcador-de-posici%C3%B3n-de-la-foto-ilustraci%C3%B3n-vectorial.jpg?s=170667a&w=0&k=20&c=lOj6z2Uu8b8CXtOz2jdE9xVPH6AGGopGjYIhOnoN3eY=" class="img-thumbnail" alt="Imagen predeterminada">
+                    </div>
+                    
+                    <!-- Botón de envío del formulario -->
+                </section>
+                <button type="submit" class="btn btn-primary">Insertar Datos del Estudiante</button>
+
+                <!-- Mostrar el mensaje de error si existe -->
+                <div *ngIf="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
