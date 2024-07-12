@@ -106,7 +106,7 @@ export class PagMainEstuComponent implements OnInit {
         this.authService.removeEmailVerified();
         
         // Redirige al usuario a la página de inicio de sesión
-        this.router.navigate(['/home']);
+        this.router.navigate(['/auth/login']);
       },
       error: (err) => {
         console.error('Logout failed:', err);

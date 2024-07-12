@@ -14,22 +14,6 @@ export class AuthService {
     this.isBrowser = typeof window !== 'undefined'
   }
 
-  //REGISTRO DE ESTUDIANTES
-  registroEstudiante(name:string,email:string, password:string) : Observable<any>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer' + this.getToken()
-    })
-    return this.http.post(`${this.apiUrl}/registro/estudiante`,{name,email,password},{headers:headers});
-  }
-  //REGISTRO DE RECLUTADORES
-  registroReclutador(name:string,email:string, password:string) : Observable<any>{
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer' + this.getToken()
-    })
-    return this.http.post(`${this.apiUrl}/registro/reclutador`,{name,email,password},{headers:headers});
-  }
   //LOGIN
   login(email:string, password:string): Observable<any>{
     const headers = new HttpHeaders({

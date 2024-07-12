@@ -7,11 +7,12 @@ import { InserSkillEstuComponent } from './estudiante/inser-skill-estu/inser-ski
 import { InserDataEstuComponent } from './estudiante/inser-data-estu/inser-data-estu.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { MisPostulacionesComponent } from './estudiante/mis-postulaciones/mis-postulaciones.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, PagMainEstuComponent, ProfileEstuComponent, InserSkillEstuComponent, InserDataEstuComponent, ResetPasswordComponent, MisPostulacionesComponent],
+  imports: [RouterOutlet, LoginComponent, PagMainEstuComponent, ProfileEstuComponent, InserSkillEstuComponent, InserDataEstuComponent, ResetPasswordComponent, MisPostulacionesComponent, ForgotPasswordComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
